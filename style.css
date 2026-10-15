@@ -1,0 +1,4 @@
+ :root { --bg:#f6f5f0; --ink:#162c29; --muted:#465e57; --accent:#145d48; --surface:#ffffff; --line:#b8c7bf; --highlight:#d8ed8b; --error:#a12626; --focus:#9a4610; }
+*,*::before,*::after {box-sizing:border-box;margin:0;padding:0}
+body {background:var(--bg);color:var(--ink);font-family:Arial,sans-serif;line-height:1.6}
+a {color:var(--accent)} button,input {font:inherit} button {cursor:pointer} :focus-visible {outline:3px solid var(--focus);outline-offset:4px}
