@@ -1,7 +1,7 @@
 // Run with Playwright installed and Homework3 served at localhost:5500/Homework3/.
 const { chromium } = require('playwright');
 (async () => {
- const browser = await chromium.launch({headless:true,args:['--no-sandbox']});
+ const browser = await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH || undefined,args:['--no-sandbox','--disable-gpu']});
  const page = await browser.newPage();
  await page.goto('http://localhost:5500/Homework3/');
  const result = await page.evaluate(async () => {
