@@ -1,0 +1,9 @@
+419239a docs(spec): define component contracts and WBS
+dfcb367 feat(html): define event hub contracts
+c8e601e feat(css): define design tokens and reset
+9426c73 feat(css): build responsive event layout
+7768f31 feat(timer): implement drift-free UTC countdown
+82a43f6 feat(form): implement explicit state machine
+1ce5a87 fix(form): prevent duplicates and sanitize input
+bb8299b docs(audit): document three verified regression cases
+8b5885d docs(qa): record checks and submission instructions

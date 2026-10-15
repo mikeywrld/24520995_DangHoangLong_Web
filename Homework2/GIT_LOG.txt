@@ -1,0 +1,8 @@
+a9ed7fd docs(spec): define component contracts and WBS
+ad9d907 feat(html): define drum pad data-sound contract
+f6fcec7 feat(css): define design tokens and reset
+f1a3af4 feat(css): build responsive drum grid
+e6aeefc feat(audio): implement polyphonic playback
+565be11 feat(input): bind keys with repeat throttling
+2920232 feat(recorder): record and replay FIFO beats
+d59c67c docs(qa): record checks and submission instructions
