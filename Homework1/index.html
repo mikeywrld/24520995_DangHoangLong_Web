@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; form-action 'self'; base-uri 'none'">
+  <meta name="description" content="Developer portfolio: semantic, accessible, fast.">
+  <title>Developer Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header">
+    <h1>Hoang Long, Lead Engineer</h1>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="theme-btn" type="button" aria-pressed="false">Dark mode</button>
+  </header>
+
+  <main id="main-content">
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <img src="assets/avatar.svg" alt="Portrait of Hoang Long" width="160" height="160">
+      <p>I build fast, accessible web applications with vanilla HTML, CSS and JavaScript.</p>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <ul class="skill-grid">
+        <li>Semantic HTML</li>
+        <li>CSS Grid &amp; Flexbox</li>
+        <li>ES6+ JavaScript</li>
+        <li>Accessibility (WCAG 2.2)</li>
+        <li>Git workflow</li>
+        <li>Web performance</li>
+      </ul>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <ul class="project-grid">
+        <li>
+          <article class="project-card">
+            <h3>Distributed State Engine</h3>
+            <p>Lightweight event bus built without external libraries.</p>
+            <a href="#projects" aria-label="View State Engine repository">Source code</a>
+          </article>
+        </li>
+        <li>
+          <article class="project-card">
+            <h3>Accessible Dashboard</h3>
+            <p>Keyboard-first analytics dashboard with WCAG 2.2 AA contrast.</p>
+            <a href="#projects" aria-label="View Dashboard repository">Source code</a>
+          </article>
+        </li>
+        <li>
+          <article class="project-card">
+            <h3>Drum Kit Engine</h3>
+            <p>Polyphonic audio engine driven by data-sound attributes.</p>
+            <a href="#projects" aria-label="View Drum Kit repository">Source code</a>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <form action="#contact" method="get">
+        <label for="contact-name">Full name</label>
+        <input type="text" id="contact-name" name="name" required minlength="3">
+        <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="email" required>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Hoang Long</p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

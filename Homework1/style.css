@@ -1,0 +1,71 @@
+/* Design tokens: all colours via variables (contrast >= 4.5:1) */
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #0f172a;
+  --text-muted: #334155;
+  --accent: #0369a1;
+  --accent-text: #ffffff;
+  --card-bg: #f1f5f9;
+  --border-color: #94a3b8;
+  --focus: #b45309;
+}
+:root[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --text-primary: #f8fafc;
+  --text-muted: #cbd5e1;
+  --accent: #7dd3fc;
+  --accent-text: #0f172a;
+  --card-bg: #1e293b;
+  --border-color: #64748b;
+  --focus: #fbbf24;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+.skip-link {
+  position: absolute; left: 0.5rem; top: -4rem;
+  background: var(--accent); color: var(--accent-text);
+  padding: 0.5rem 1rem; z-index: 10;
+}
+.skip-link:focus { top: 0.5rem; }
+
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 1rem; padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.nav-links { display: flex; flex-wrap: wrap; list-style: none; gap: 1rem; }
+a { color: var(--accent); }
+main, footer { max-width: 60rem; margin: 0 auto; padding: 1rem; }
+section { padding: 1.5rem 0; }
+h2 { margin-bottom: 0.75rem; }
+img { max-width: 100%; height: auto; border-radius: 50%; margin-bottom: 0.75rem; }
+
+.skill-grid, .project-grid {
+  display: grid; gap: 1rem; list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+.skill-grid li, .project-card {
+  background: var(--card-bg); border: 1px solid var(--border-color);
+  border-radius: 8px; padding: 1rem; height: 100%;
+}
+form { display: grid; gap: 0.5rem; max-width: 24rem; }
+input {
+  padding: 0.5rem; font: inherit;
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-color); border-radius: 4px;
+}
+button {
+  font: inherit; padding: 0.5rem 1rem; cursor: pointer;
+  background: var(--accent); color: var(--accent-text);
+  border: 0; border-radius: 4px;
+}
+footer { color: var(--text-muted); }
+
+/* M2: visible focus ring for keyboard users */
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
