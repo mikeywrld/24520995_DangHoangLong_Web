@@ -1,0 +1,12 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {filterRows,sortRows,paginateRows,nextCell} from '../src/model';
+const rows=[{id:'a',n:2},{id:'b',n:10},{id:'c',n:3},{id:'d',n:3}];
+test('numeric sort and stable ties',()=>{assert.deepEqual(sortRows(rows,{key:'n',direction:'asc'}).map(x=>x.id),['a','c','d','b']);});
+test('sort never mutates input',()=>{sortRows(rows,{key:'n',direction:'desc'});assert.deepEqual(rows.map(x=>x.n),[2,10,3,3]);});
+test('text ascending and descending',()=>{assert.equal(sortRows(rows,{key:'id',direction:'desc'})[0].id,'d');});
+test('filter ignores surrounding whitespace and case',()=>assert.equal(filterRows(rows,[{header:'ID',accessorKey:'id'}],' A ')[0].id,'a'));
+test('empty filter returns all; missing match returns none',()=>{assert.equal(filterRows(rows,[{header:'ID',accessorKey:'id'}],'').length,4);assert.equal(filterRows(rows,[{header:'ID',accessorKey:'id'}],'xyz').length,0);});
+test('page bounds clamp after dataset shrinks',()=>assert.equal(paginateRows(rows,9,10).pageIndex,0));
+test('pagination partitions without duplicates',()=>assert.deepEqual([...paginateRows(rows,0,2).rows,...paginateRows(rows,1,2).rows],rows));
+test('empty pagination and invalid page size',()=>{assert.equal(paginateRows([],0,10).rows.length,0);assert.throws(()=>paginateRows(rows,0,0),RangeError);});
+test('all arrow directions and boundaries',()=>{assert.deepEqual(nextCell(1,1,'ArrowDown',3,3),{row:2,col:1});assert.deepEqual(nextCell(1,1,'ArrowUp',3,3),{row:0,col:1});assert.deepEqual(nextCell(1,1,'ArrowLeft',3,3),{row:1,col:0});assert.deepEqual(nextCell(1,1,'ArrowRight',3,3),{row:1,col:2});assert.deepEqual(nextCell(0,0,'ArrowUp',3,3),{row:0,col:0});assert.deepEqual(nextCell(2,2,'ArrowRight',3,3),{row:2,col:2});});

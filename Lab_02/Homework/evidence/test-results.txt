@@ -1,0 +1,30 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> homework1@1.0.0 test
+> node --import tsx --test tests/*.test.ts tests/*.test.tsx
+
+✔ initial rows, semantic structure, single tab stop (131.833328ms)
+✔ last page filter resets and input retains focus (70.856153ms)
+✔ empty state restores all rows (23.425699ms)
+✔ arrows change real DOM focus; Enter selects; Space toggles (131.537458ms)
+✔ selection persists after sort and pagination; callback receives object (55.131275ms)
+✔ header Enter sorts without selecting a row; Tab escapes (83.243724ms)
+✔ page-size controls render correct count (20.619289ms)
+✔ untrusted values render as text (5.283189ms)
+✔ numeric sort and stable ties (2.015546ms)
+✔ sort never mutates input (0.202549ms)
+✔ text ascending and descending (8.976303ms)
+✔ filter ignores surrounding whitespace and case (0.209129ms)
+✔ empty filter returns all; missing match returns none (0.186305ms)
+✔ page bounds clamp after dataset shrinks (0.20314ms)
+✔ pagination partitions without duplicates (0.17634ms)
+✔ empty pagination and invalid page size (0.57577ms)
+✔ all arrow directions and boundaries (0.346211ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2025.641528

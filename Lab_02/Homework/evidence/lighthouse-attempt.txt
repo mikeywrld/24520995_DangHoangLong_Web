@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+Runtime error encountered: The CHROME_PATH environment variable must be set to a Chrome/Chromium executable no older than Chrome stable.
+Error
+    at new LauncherError (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/utils.js:28:22)
+    at new ChromePathNotSetError (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/utils.js:34:9)
+    at Module.linux (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/chrome-finder.js:124:15)
+    at Launcher.getFirstInstallation (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/chrome-launcher.js:134:43)
+    at Launcher.launch (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/chrome-launcher.js:207:43)
+    at Module.launch (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/chrome-launcher/dist/chrome-launcher.js:32:20)
+    at getDebuggableChrome (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/lighthouse/cli/run.js:86:25)
+    at runLighthouse (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/lighthouse/cli/run.js:233:34)
+    at begin (file:///workspace/scratch/aa79d03da70b/homework1/node_modules/lighthouse/cli/bin.js:135:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
