@@ -1,0 +1,5 @@
+.card { padding: 24px; }
+.header { display: flex; gap: 16px; }
+.metrics { display: grid; grid-template-columns: 1fr 2fr; }
+.skills { list-style: none; padding: 0; }
+.avatar { display: grid; place-items: center; width: 72px; height: 72px; }
