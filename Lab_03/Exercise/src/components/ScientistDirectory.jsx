@@ -2,9 +2,11 @@ import { useId, useRef, useState } from 'react';
 import { SMART_PEOPLE, selectPeople } from '../data/people';
 export function ScientistDirectory({initialData = SMART_PEOPLE}) {
  const prefix=useId(); const searchRef=useRef(null);
- const [people]=useState(()=>[...initialData]);
+ const [people,setPeople]=useState(()=>[...initialData]);
  const [query,setQuery]=useState(''); const [minIq,setMinIq]=useState(160); const [sortBy,setSortBy]=useState('iq-desc');
  const visible=selectPeople(people,query,minIq,sortBy);
+ function reset() {setPeople([...initialData]);setQuery('');setMinIq(160);setSortBy('iq-desc');searchRef.current?.focus();}
+ function remove(id) {setPeople(prev=>prev.filter(p=>p.id!==id));searchRef.current?.focus();}
  return <section aria-labelledby={prefix+'-title'}>
   <h2 id={prefix+'-title'}>Scientist & Pioneer Directory</h2>
   <p>Explore six pioneers. IQ scores reproduce the classroom fixture.</p>
@@ -14,7 +16,8 @@ export function ScientistDirectory({initialData = SMART_PEOPLE}) {
    <label htmlFor={prefix+'-sort'}>Sort by<select id={prefix+'-sort'} value={sortBy} onChange={e=>setSortBy(e.target.value)}><option value="iq-desc">IQ: highest first</option><option value="age-asc">Age: youngest first</option></select></label>
   </form>
   <p><output role="status" aria-live="polite">Found {visible.length} pioneers</output></p>
-  <ul className="people">{visible.map(p=><li key={p.id}><span><strong>{p.name}</strong><small>IQ {p.iq} / Age {p.age}</small></span></li>)}</ul>
+  <ul className="people">{visible.map(p=><li key={p.id}><span><strong>{p.name}</strong><small>IQ {p.iq} / Age {p.age}</small></span><button type="button" className="secondary" aria-label={'Delete '+p.name} onClick={()=>remove(p.id)}>Delete</button></li>)}</ul>
   {!visible.length && <p>No pioneers match your filters.</p>}
+  <button type="button" onClick={reset}>Reset directory</button>
  </section>;
 }
