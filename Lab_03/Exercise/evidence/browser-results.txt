@@ -1,0 +1,10 @@
+PASS: production build mounted under React 19; semantic profile, failed-avatar initials fallback.
+PASS: axe WCAG automated scan / ex1 / zero violations.
+PASS: search, numeric filter, empty results, age sort, delete, focus restoration and reset.
+PASS: axe WCAG automated scan / ex2 / zero violations.
+PASS: forced failure, retry loading, successful recovery and rapid CES/TE/GE switching.
+PASS: axe WCAG automated scan / ex3 / zero violations.
+PASS: immutable effort/red flag, reply commitment survives 5s, unanswered message exits at 5s.
+PASS: axe WCAG automated scan / bonus / zero violations.
+PASS: 375px / no horizontal overflow and all form controls labelled, across all four exercises.
+PASS: zero runtime JavaScript errors or console warnings (avatar request deliberately blocked to test fallback).

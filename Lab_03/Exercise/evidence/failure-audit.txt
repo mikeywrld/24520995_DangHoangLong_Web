@@ -1,0 +1,3 @@
+FAILURE 01 reproduced: sort mutated source. FIX: toSorted preserved source.
+FAILURE 02 reproduced: late CES overwrote GE. FIX: abort retained GE.
+FAILURE 03 reproduced: leaked timeout overwrote commitment. FIX: abort preserved COMMITTED.

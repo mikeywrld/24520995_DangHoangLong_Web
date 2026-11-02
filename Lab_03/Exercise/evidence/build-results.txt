@@ -1,0 +1,14 @@
+
+> lab03-production-react-exercises@1.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 24 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.41 kB │ gzip:  0.29 kB
+dist/assets/index-xxzJFjxx.css    3.85 kB │ gzip:  1.51 kB
+dist/assets/index-GwDA2Mmp.js   232.09 kB │ gzip: 72.75 kB
+
+✓ built in 394ms

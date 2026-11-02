@@ -1,0 +1,20 @@
+// Isolated AI-style faulty candidates. These are intentionally broken examples, not shipped application code.
+import assert from 'node:assert/strict';
+import {SMART_PEOPLE,selectPeople} from '../src/data/people.js';
+import {fetchKraftonPubgTelemetry as fetchData} from '../src/data/telemetry.js';
+import {waitForReply} from '../src/data/relationship.js';
+const people=[...SMART_PEOPLE];const before=people.map(p=>p.id).join(',');
+people.sort((a,b)=>a.age-b.age);assert.notEqual(people.map(p=>p.id).join(','),before);
+const fixed=[...SMART_PEOPLE];selectPeople(fixed,'',0,'age-asc');assert.equal(fixed.map(p=>p.id).join(','),before);
+console.log('FAILURE 01 reproduced: sort mutated source. FIX: toSorted preserved source.');
+let visible;
+const old=fetchData('ces',{mode:'success',delayMs:30}).then(d=>visible=d.id);
+await fetchData('ge',{mode:'success',delayMs:1}).then(d=>visible=d.id);await old;assert.equal(visible,'ces');
+const c=new AbortController();const safeOld=fetchData('ces',{mode:'success',delayMs:30,signal:c.signal}).catch(e=>assert.equal(e.name,'AbortError'));c.abort();
+await fetchData('ge',{mode:'success',delayMs:1}).then(d=>visible=d.id);await safeOld;assert.equal(visible,'ge');
+console.log('FAILURE 02 reproduced: late CES overwrote GE. FIX: abort retained GE.');
+let phase='DATING_NO_LOVE';
+setTimeout(()=>{phase='SELF_RESPECT_EXIT';},10);phase='COMMITTED';await new Promise(r=>setTimeout(r,20));assert.equal(phase,'SELF_RESPECT_EXIT');
+phase='DATING_NO_LOVE';const controller=new AbortController();const pending=waitForReply(controller.signal,10).then(()=>{phase='SELF_RESPECT_EXIT';}).catch(e=>assert.equal(e.name,'AbortError'));
+phase='COMMITTED';controller.abort();await pending;assert.equal(phase,'COMMITTED');
+console.log('FAILURE 03 reproduced: leaked timeout overwrote commitment. FIX: abort preserved COMMITTED.');

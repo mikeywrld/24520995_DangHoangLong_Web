@@ -1,0 +1,23 @@
+
+> lab03-production-react-exercises@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ trimmed case-insensitive search and numeric threshold (2.822311ms)
+✔ IQ and age sorting preserve source order and stable IDs (7.024508ms)
+✔ telemetry resolves complete fixture (4.276403ms)
+✔ packet-loss boundary is below 0.35 (3.509736ms)
+✔ failure, retry success and unknown squad (4.024631ms)
+✔ abort cancels stale request and latest squad wins (1.779825ms)
+✔ already-aborted telemetry rejects (0.332678ms)
+✔ FSM commitment requires a pending message (0.405627ms)
+✔ immutable log derives 100 x 0.1 versus 1 x 50 (0.251586ms)
+✔ stale timeout ignored after switch, reply and reset (0.181913ms)
+✔ reply wait aborts and normal wait completes (1.692504ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 132.045644
