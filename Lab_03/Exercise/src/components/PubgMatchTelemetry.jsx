@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useId, useState } from 'react';
 import { fetchKraftonPubgTelemetry, PUBG_VN_SQUADS } from '../data/telemetry';
 export function PubgMatchTelemetry({squadId='ces',mode='random',delayMs=900}) {
- const [view,setView]=useState({status:'IDLE',data:null,error:null}); const retryTick=0;
+ const [view,setView]=useState({status:'IDLE',data:null,error:null}); const [retryTick,setRetryTick]=useState(0);
  useEffect(()=>{
   const controller=new AbortController();
   setView({status:'LOADING',data:null,error:null});
@@ -12,8 +12,8 @@ export function PubgMatchTelemetry({squadId='ces',mode='random',delayMs=900}) {
  },[squadId,mode,delayMs,retryTick]);
  return <section className="radar" aria-label="Squad telemetry" data-state={view.status} aria-busy={view.status==='LOADING'}>
   {view.status==='IDLE' && <p role="status">Radar idle.</p>}
-  {view.status==='LOADING' && <p role="status">Loading telemetry...</p>}
-  {view.status==='ERROR' && <section role="alert"><h3>Blue-Zone Link Lost</h3><p>{view.error}</p></section>}
+  {view.status==='LOADING' && <p role="status" className="skeleton">Syncing KRAFTON Radar...</p>}
+  {view.status==='ERROR' && <section role="alert"><h3>Blue-Zone Link Lost</h3><p>{view.error}</p><button type="button" onClick={()=>setRetryTick(t=>t+1)}>Reconnect Satellite (Retry)</button></section>}
   {view.status==='SUCCESS' && <article aria-live="polite"><h3>{view.data.name}</h3><p>{view.data.status}</p><dl className="stats">{Object.entries({Map:view.data.map,Phase:view.data.phase,Alive:view.data.alive,Kills:view.data.kills,'WWCD probability':view.data.wwcdProb}).map(([k,v])=><Fragment key={k}><dt>{k}</dt><dd>{v}</dd></Fragment>)}</dl></article>}
  </section>;
 }
