@@ -1,0 +1,24 @@
+.arena { display: grid; gap: 1.5rem; min-width: 0; }
+.arena h2, .arena h3, .arena h4 { margin-top: 0; }
+.block { display: grid; gap: 0.75rem; }
+.block h3 { margin: 0; }
+.crates { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.crate article { height: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space); display: grid; gap: 0.5rem; align-content: start; }
+.crate h4 { margin: 0; color: var(--accent); }
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.2rem 1rem; margin: 0; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+.actions { margin: 0; }
+.demo summary { cursor: pointer; color: var(--muted); min-height: 24px; }
+.ok { color: var(--ok); font-weight: 700; }
+.err { margin: 0; padding: 0.6rem 0.8rem; border-radius: 8px; background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger); font-weight: 700; }
+.form { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin: 0; }
+.form p, .form .field { margin: 0; }
+.check { display: flex; align-items: center; gap: 0.5rem; min-height: 44px; }
+.check input { width: 1.4rem; height: 1.4rem; accent-color: var(--accent); }
+.tableWrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+.table { width: 100%; border-collapse: collapse; min-width: 28rem; font-variant-numeric: tabular-nums; }
+.table th, .table td { text-align: left; padding: 0.55rem 0.75rem; border-bottom: 1px solid var(--border); }
+.table thead th { background: var(--surface-2); }
+.table tbody th { font-weight: 700; }
+.feed { margin: 0; padding-left: 1.5rem; display: grid; gap: 0.3rem; max-height: 16rem; overflow-y: auto; }
