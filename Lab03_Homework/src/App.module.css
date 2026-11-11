@@ -1,0 +1,7 @@
+.header { padding: var(--space); border-bottom: 1px solid var(--border); background: var(--surface); display: grid; gap: 0.75rem; }
+.header h1 { margin: 0; font-size: clamp(1.1rem, 4.5vw, 1.6rem); }
+.nav, .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.main { padding: var(--space); max-width: 90rem; margin: 0 auto; min-width: 0; }
+.main:focus { outline: none; }
+.stack { display: grid; gap: 1rem; }
+.stack h2 { margin: 0; }
