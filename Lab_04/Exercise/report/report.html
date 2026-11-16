@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>24520995_DangHoangLong_Lab04_Exercise_Report</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Calibri, Arial, sans-serif; color: #13263a; font-size: 10.5pt; line-height: 1.5; }
+  .page { width: 210mm; height: 297mm; padding: 14mm 18mm 14mm 18mm; position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  .running { display: flex; justify-content: space-between; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: #1f6f63; font-weight: 600; border-bottom: 1.5px solid #13263a; padding-bottom: 2mm; margin-bottom: 6mm; }
+  .running .right { color: #13263a; }
+  .footer { position: absolute; bottom: 9mm; left: 18mm; right: 18mm; font-size: 7.5pt; color: #6b7a8a; display: flex; justify-content: space-between; border-top: 1px solid #d5dde5; padding-top: 1.5mm; }
+  h1 { font-size: 24pt; margin: 2mm 0 1mm; line-height: 1.15; }
+  .meta { font-size: 10.5pt; margin-bottom: 1mm; }
+  .meta b { color: #13263a; }
+  .gh { font-size: 10pt; color: #1f6f63; margin-bottom: 5mm; }
+  h2 { font-size: 13.5pt; margin: 5mm 0 1.5mm; padding-left: 3mm; border-left: 4px solid #1f6f63; line-height: 1.25; }
+  h2 .ex { display: block; font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: #1f6f63; font-weight: 600; }
+  h3 { font-size: 11pt; margin: 4mm 0 1mm; }
+  p { margin: 0 0 2.5mm; text-align: justify; }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 9.2pt; background: #eef2f6; padding: 0 1.2mm; border-radius: 1mm; color: #0d3b52; }
+  figure { margin: 3mm 0 4mm; text-align: center; }
+  figure img { width: 100%; border: 1px solid #d5dde5; border-radius: 1.5mm; }
+  figure.narrow img { width: 82%; }
+  figcaption { font-size: 8.8pt; color: #44556a; margin-top: 1.5mm; font-style: italic; }
+  figcaption b { font-style: normal; color: #13263a; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 1.5mm 0 3mm; }
+  th, td { border: 1px solid #d5dde5; padding: 1.2mm 2.5mm; text-align: left; }
+  th { background: #13263a; color: #fff; font-weight: 600; }
+  tr:nth-child(even) td { background: #f5f8fa; }
+  .ok { color: #1f6f63; font-weight: 700; }
+  .warn { color: #a05a00; font-weight: 700; }
+  .err { color: #b3261e; font-weight: 700; }
+  .note { background: #f5f8fa; border: 1px solid #d5dde5; border-left: 4px solid #a05a00; padding: 2mm 3mm; font-size: 9.3pt; margin: 2mm 0 3mm; }
+  .src { font-size: 9pt; color: #44556a; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="running"><span>University of Information Technology / VNUHCM</span><span class="right">UIT S3T / Lab 4 Exercise Report &nbsp;·&nbsp; 1 / 4</span></div>
+
+  <h1>Lab 4 Exercise Report</h1>
+  <div class="meta"><b>Dang Hoang Long</b> &nbsp;|&nbsp; Student ID <b>24520995</b></div>
+  <div class="gh">GitHub: <b>mikeywrld/24520995_DangHoangLong_Web</b> &nbsp;(folder <code>Lab_04/Exercise/</code>)</div>
+
+  <h2>Objective</h2>
+  <p>Build and verify a multi-route React 19 application that loads views on demand, derives accessible form validation during render, and retrieves and submits forum messages through an Express REST API.</p>
+
+  <h2>Scope and evidence</h2>
+  <p>The attached README describes the intended project structure and test suites. The submitted attachments contained documentation and the lecture deck. The screenshots and runtime results in this report come from a locally reconstructed verification demo based on those materials. The original project and its test suites remain unverified.</p>
+
+  <h2><span class="ex">Exercise 1.1</span>Route-level code splitting</h2>
+  <p>Route components are loaded with <code>React.lazy</code>. A Suspense boundary supplies a skeleton with <code>aria-busy="true"</code> and <code>aria-live="polite"</code>. The Vite production build emitted separate JavaScript chunks for Home, About, People, Person, Form and Forum. The browser check delayed the About chunk until the skeleton was visible, then released it and confirmed that About rendered. Cumulative Layout Shift was outside this check.</p>
+
+  <figure>
+    <img src="figures/fig1_suspense.png" alt="Suspense skeleton while the About chunk is held">
+    <figcaption><b>Figure 1.</b> Chromium shows the Suspense skeleton while the About chunk is held.</figcaption>
+  </figure>
+
+  <div class="footer"><span>Dang Hoang Long · 24520995</span><span>Lab 4 · Multi-Route SPA Architecture</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="running"><span>Exercises 1.2, 1.2.1 and 1.2.2 / Sprint 1</span><span class="right">UIT S3T / Lab 4 Exercise Report &nbsp;·&nbsp; 2 / 4</span></div>
+
+  <h2><span class="ex">Exercises 1.2 · 1.2.1 · 1.2.2</span>Routing and directory</h2>
+  <p>React Router v7 declares routes with <code>Routes</code> and JSX <code>element</code> props. The shared layout renders child routes through <code>Outlet</code>. The <code>NavLink</code> callback uses <code>isActive</code> for active styling. Browser checks confirmed the active About link and the selected directory record.</p>
+
+  <figure>
+    <img src="figures/fig2_people_an.jpg" alt="/people/an route">
+    <figcaption><b>Figure 2.</b> The <code>/people/an</code> route highlights An Nguyen and displays the matching person record.</figcaption>
+  </figure>
+
+  <p>The directory uses a responsive CSS grid, with a nested detail route that resolves the ID through <code>useParams()</code>. The detail view uses <code>dl</code>, <code>dt</code> and <code>dd</code> for field names and values. A direct visit to an unknown ID keeps the directory visible and renders an in-app 404 state.</p>
+
+  <figure>
+    <img src="figures/fig3_people_missing.jpg" alt="/people/missing route">
+    <figcaption><b>Figure 3.</b> Direct navigation to <code>/people/missing</code> displays the missing-person state.</figcaption>
+  </figure>
+
+  <div class="footer"><span>Dang Hoang Long · 24520995</span><span>Lab 4 · Multi-Route SPA Architecture</span></div>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page">
+  <div class="running"><span>Exercise 1.3 / Sprint 2</span><span class="right">UIT S3T / Lab 4 Exercise Report &nbsp;·&nbsp; 3 / 4</span></div>
+
+  <h2><span class="ex">Exercise 1.3</span>Synchronous form validation</h2>
+  <p>Context supplies the field values and validation state. Validation runs during render, which removes the need for effects that synchronize errors and form validity. Each field calls <code>useId()</code> and links its error to the input through <code>aria-describedby</code>. The browser check confirmed distinct field IDs and the change in <code>aria-invalid</code> when the email was corrected.</p>
+
+  <figure>
+    <img src="figures/fig4_invalid_email.jpg" alt="Invalid email inline error">
+    <figcaption><b>Figure 4.</b> An invalid email produces an inline error and disables Submit.</figcaption>
+  </figure>
+
+  <p>A successful submit stores a snapshot of the values. <code>ShowData</code> renders the submitted values as a definition list and formatted JSON.</p>
+
+  <figure>
+    <img src="figures/fig5_showdata.jpg" alt="ShowData output">
+    <figcaption><b>Figure 5.</b> Submitting a valid name and email displays both values in <code>ShowData</code>.</figcaption>
+  </figure>
+
+  <div class="footer"><span>Dang Hoang Long · 24520995</span><span>Lab 4 · Multi-Route SPA Architecture</span></div>
+</section>
+
+<!-- ============ PAGE 4 ============ -->
+<section class="page">
+  <div class="running"><span>Exercise 1.7.1 / Sprint 3</span><span class="right">UIT S3T / Lab 4 Exercise Report &nbsp;·&nbsp; 4 / 4</span></div>
+
+  <h2><span class="ex">Exercise 1.7.1</span>Forum and API verification</h2>
+  <p>The demo follows the README and server contract for <code>/api/messages/:forum</code>. The hook aborts the previous GET on channel change and guards result updates with <code>signal.aborted</code>. Express validates author and message text, generates a UUID for accepted posts, and applies CORS for the client origin. The demo stores messages in memory for the duration of the run.</p>
+
+  <figure class="narrow">
+    <img src="figures/fig6_forum.jpg" alt="notNasa channel forum">
+    <figcaption><b>Figure 6.</b> The notNasa channel displays the submitted message after the API refresh.</figcaption>
+  </figure>
+
+  <h3>Observed request results</h3>
+  <table>
+    <thead><tr><th style="width:60%">Request</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td><code>GET /api/messages/nasa</code></td><td class="warn">net::ERR_ABORTED (Chromium)</td></tr>
+      <tr><td><code>GET /api/messages/esports-tribunal</code></td><td class="warn">net::ERR_ABORTED (Chromium)</td></tr>
+      <tr><td><code>GET /api/messages/notNasa</code></td><td class="ok">200</td></tr>
+      <tr><td><code>POST /api/messages/notNasa</code></td><td class="ok">201</td></tr>
+      <tr><td><code>GET /api/messages/notNasa</code></td><td class="ok">200</td></tr>
+      <tr><td><code>POST /api/messages/notNasa</code></td><td class="err">400 (blank text, direct API request)</td></tr>
+    </tbody>
+  </table>
+  <p>Rapid switching with an 850 ms API delay canceled two in-flight GET requests. The final channel loaded and displayed the posted message. A direct request with blank text returned HTTP 400 and included the configured CORS origin header. Chromium reported zero console warnings or page errors during the browser check.</p>
+
+  <h2>Project documentation</h2>
+  <p>The project rules specify a contract-first test cycle and atomic commits. The task decomposition maps those steps to the three sprints. The supplied AI audit documents conflicting endpoint examples and a shared field ID in the slides. The demo uses one canonical endpoint and gives every input its own ID.</p>
+  <p class="src"><b>Source materials.</b> UIT S3T Lab 4 lecture deck, README, project rules, task decomposition and AI failure audit.</p>
+
+  <div class="footer"><span>Dang Hoang Long · 24520995</span><span>Lab 4 · Multi-Route SPA Architecture</span></div>
+</section>
+
+</body>
+</html>
